@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connecting 97CLIPZ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>Connecting 97CLIPZ…</h1>
+<p id="msg">Finishing TikTok sign-in on this computer.</p>
+</main>
+<script>
+  // TikTok redirects here after sign-in. Forward the result to the 97CLIPZ app running
+  // on this computer, which completes the connection.
+  (function () {
+    var q = window.location.search;
+    if (q && (q.indexOf("code=") !== -1 || q.indexOf("error=") !== -1)) {
+      window.location.replace("http://localhost:8723/callback" + q);
+    } else {
+      document.getElementById("msg").textContent = "Nothing to do here. Start sign-in from the 97CLIPZ app.";
+    }
+  })();
+</script>
+</body>
+</html>
